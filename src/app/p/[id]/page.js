@@ -1,7 +1,8 @@
 async function getPaste(id) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/pastes/${id}`, {
-        cache: "no-store",
-      });
+  const res = await fetch(`/api/pastes/${id}`, {
+    cache: "no-store",
+  });
+  
       
   
     if (!res.ok) {
