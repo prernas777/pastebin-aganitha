@@ -15,6 +15,13 @@ A simple Pastebin-like service built as part of an assignment.
 - PostgreSQL (Neon)
 - REST APIs
 
+- ## Running Locally
+
+```bash
+npm install
+npm run dev
+
+
 ## API Endpoints
 
 ### Create Paste
