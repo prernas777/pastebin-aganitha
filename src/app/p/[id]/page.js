@@ -1,16 +1,22 @@
+import { headers } from "next/headers";
+
 async function getPaste(id) {
-  const res = await fetch(`/api/pastes/${id}`, {
-    cache: "no-store",
-  });
-  
-      
-  
-    if (!res.ok) {
-      return null;
-    }
-  
-    return res.json();
+  const headersList = headers();
+  const host = headersList.get("host");
+  const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
+
+  const res = await fetch(
+    `${protocol}://${host}/api/pastes/${id}`,
+    { cache: "no-store" }
+  );
+
+  if (!res.ok) {
+    return null;
   }
+
+  return res.json();
+}
+
   
   export default async function PastePage({ params }) {
     const paste = await getPaste(params.id);
